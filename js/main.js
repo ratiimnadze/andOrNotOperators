@@ -96,3 +96,124 @@ let masterkKey = false;
 
 let bombWillLaunch = masterkKey || presidentKey && primeMinisterKey && generalOfArmiesKey;
 console.log(bombWillLaunch);
+
+/* პინ კოდი
+
+მომხმარებელს საბანკო ბარათზე სურს პინ კოდის შეცვლა. მოცემული გვაქვს შემდეგი ცვლადები:
+
+Const userPinCode (number) მომხმარებლის ამჟამინდელი პინ კოდი
+
+პროგრამაში მოვიდა მომხმარებლის მიერ შეყვანილი ინფორმაცია:
+
+Const currentPinCode  (number) - მომხმარებელს ბანკომატმა კითხა თავის ამჟამინდელი პინ კოდი
+Const newPinCode (number) - ახალი პინი, რისი დაყენებაც სურს
+Const retypeNewPinCode (number) - შეცდომის გამორიცხვის მიზნით, ბანკომატმა ახალი პინ კოდი იკითხა ორჯერ
+
+პინ კოდი უნდა შიცვალოს მხოლოდ მაშინ, თუ მომხმარებელმა შეიყვანა სწორად არსებული პინი, პლუს ახალი პინი ორივე ჯერზე შეიყვანა ერთი და იგივე.
+გამოთვალეთ შედეგი და ჩაწერეთ ცვლადში:
+
+Const pinChangeComplete (boolean)
+*/
+const userPinCode = 1995;
+const currentPinCode =Number (prompt('შეიყვანეთ PIN-კოდი'));
+const newPinCode = Number (prompt('შეიყვანეთ ახალი PIN-კოდი'));
+const retypeNewPinCode = Number (prompt('გაიმეორეთ ახალი PIN-კოდი'));
+
+const pinChangeComplete = userPinCode == currentPinCode && newPinCode == retypeNewPinCode;
+
+if(pinChangeComplete){
+    console.log('PIN-კოდი წარმატებით შეიცვალა!');
+} else {
+    console.log('PIN-კოდის ცვლილებისას დაფიქსირდა შეცდომა');
+}
+
+/*
+GAME OVER
+
+თამაშის გმირს უნდა გადაუწყვიტოთ, მორჩა თუ არა მისთვის თამაში. მოცემული გვაქვს შემდეგი ცვლადები:
+
+Let health (number) - 0-დან 100-მდე რიცხვი
+Let lives (number) - 0-დან 3-მდე რიცხვი
+
+თამაში მორჩება იმ შემთხვევაში, თუ მოთამაშეს 3-ივე სიცოცხლე უკვე დახარჯული აქვს, პლუს health-იც ამოეწურა მიმდინარე ტურში.
+
+მოცემული ცვლადებით გამოთვალეთ შედეგი:
+
+Const gameOver (boolean)
+*/
+let health = 0;
+let lives = 0;
+
+const gameOver = health == 0 && lives == 0;
+
+if (gameOver){
+    console.log('Game Over')
+}else {
+    console.log(`Health = ${health} and Lives = ${lives}`)
+}
+
+/*
+Meama-ს ყავა
+
+მომხმარებელს სურს ყავის შეძენა, მოცემული გვაქვს შემდეგი ცვლადები:
+
+Let capsuleCount (number) - რამდენი კაფსულაა ხელმისაწვდომი
+Let capsulePrice (number) - კაფსულის ღირებულება
+
+Let userBalance (number) - მომხმარებლის ბალანსი
+Let creditCardStatus (boolean) - თუ მომხმარებელს ბალანსზე თანხა არ აქვს, ბარათიდან ჩამოჭრას ცდის სისტემა და სტატუსს ჩაწერს ამ ცვლადში.
+
+გამოთვალეთ შედეგი და ჩაწერეთ ცვლადში 
+
+Const paymentComplete (boolean)
+*/
+let capsuleCount =50;
+let capsulePrice = 2;
+let customerOrder = 5;
+let userBalance = 20;
+
+let creditCardStatus = capsuleCount >= customerOrder && userBalance >= (capsulePrice * customerOrder);
+
+if (creditCardStatus){
+    console.log('გადახდა წარმატებით განხორციელდა');
+} else {
+    console.log('არ გაქვთ საკმარისი თანხა ანგარიშზე');
+}
+
+/*
+Hotel booking
+
+მომხმარებელს სურს სასტუმროს დაჯავშნა. მოცემული გვაქვს შემდეგი ცვლადები:
+
+Let availableRooms (number) - თავისუფალი ოთახების რაოდენობა
+Let roomPrice (number) - ოთახის ღირებულება
+Let discount (number) - დისქაუნთის რაოდენობა თანხაში (ვისაც გართულება გინდათ, დისქაუნთი გააპროცენტეთ :)) )
+
+Let userBalance (number) - მომხმარებლის ბალანსი
+Let userHasDiscount (boolean) - აქვს თუ არა მომხმარებელს დისქაუნთი
+Let userRoomCount (number) - რამდენი ოთახი მოითხოვა მომხმარებელმა
+
+მომხმარებელმა დააჭირა გადახდას, გამოთვალეთ შედეგი და ჩაწერეთ ცვლადში:
+
+Const paymentComplete (boolean)
+ */
+
+let availableRooms = 50;
+let roomPrice =200;
+let userRoomCount = 5;
+let discount =userRoomCount * roomPrice * 0.25 ; // 25% - ფასდაკლება
+console.log(`ფასდაკლება = ${discount}`);
+
+let userBalance2 = 2000;
+let userHasDiscount = true;
+const fullMoneyAmount = userRoomCount * roomPrice - discount; // მომხმარებლის გადასახდელი თანხა
+console.log(`გადასახდელი თანხა = ${fullMoneyAmount}`) ;
+
+const paymentComplete2 = (availableRooms >= userRoomCount)  && (userBalance2 >= fullMoneyAmount);
+
+if (paymentComplete2){
+    console.log('გადახდა წარმატებით განხორციელდა');
+} else {
+    console.log('არ გაქვთ საკმარისი თანხა ანგარიშზე');
+}
+
